@@ -1,20 +1,18 @@
 pipeline {
-    
+
     agent any
 
     stages {
         stage('SCM') {
             steps {
-                script {
-                    checkout scm
-                }
+                git branch: 'main', url: 'https://github.com/MakProject/InternshipAssignment.git'
             }
         }
         stage('Building Backend') {
             steps {
                 script {
                     dir('backend') {
-                        sh 'docker build .'
+                        sh 'docker build -t backend .'
                     }
                 }
             }
@@ -23,7 +21,7 @@ pipeline {
             steps {
                 script {
                     dir('frontend') {
-                        sh 'docker build .'
+                        sh 'docker build -t frontend .'
                     }
                 }
             }
@@ -31,7 +29,7 @@ pipeline {
         stage('Deployment') {
             steps {
                 script {
-                    sh 'docker compose up -d'
+                    sh './deployment.sh'
                 }
             }
         }
