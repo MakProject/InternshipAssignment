@@ -2,4 +2,4 @@
 
 docker compose down
 
-docker up -d
+docker compose up -d
