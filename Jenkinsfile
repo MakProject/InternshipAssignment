@@ -2,10 +2,6 @@ pipeline {
 
     agent any
 
-    triggers {
-        githubPush(branch: 'main')
-    }
-
     stages {
         stage('SCM') {
             steps {
