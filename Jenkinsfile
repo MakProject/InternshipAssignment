@@ -12,7 +12,7 @@ pipeline {
         stage('Changing IP in .env') {
             steps {
                 script {
-                        sh "sed -i 's/\$AWS_IP/'"$AWS_IP"'/g' backend/.env frontend/.env.local"
+                        sh "sed -i 's/\\\$AWS_IP/${AWS_IP}/g' backend/.env frontend/.env.local"
                 }
             }
         }
