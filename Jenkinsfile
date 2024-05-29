@@ -8,6 +8,15 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/MakProject/InternshipAssignment.git'
             }
         }
+
+        stage('Changing IP in .env') {
+            steps {
+                script {
+                        sh 'sed -i 's/\$AWS_IP/'"$AWS_IP"'/g' backend/.env frontend/.env.local '
+                }
+            }
+        }
+
         stage('Building Backend') {
             steps {
                 script {
