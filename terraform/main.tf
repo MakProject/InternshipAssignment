@@ -55,24 +55,13 @@ resource "aws_instance" "web" {
 
   vpc_security_group_ids = [aws_security_group.instance_sg.id]
 
+  root_block_device {
+    volume_size = 30
+    volume_type = "gp2"
+  }
+
   tags = {
     Name = "web-instance"
   }
-}
-
-resource "aws_ebs_volume" "my_ebs" {
-  availability_zone = "ap-south-1a"
-  size              = 15
-  type              = "gp3"
-
-  tags = {
-    Name = "my_ebs_volume"
-  }
-}
-
-resource "aws_volume_attachment" "my_ebs_attachment" {
-  device_name = "/dev/sdh"
-  volume_id   = aws_ebs_volume.my_ebs.id
-  instance_id = aws_instance.web.id
 }
 
