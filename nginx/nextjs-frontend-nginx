@@ -6,5 +6,9 @@ server {
         proxy_pass http://localhost:3000;
     }
 
+    location /metrics {
+        stub_status;
+    }	
+
 }
 

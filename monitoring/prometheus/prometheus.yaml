@@ -1,0 +1,17 @@
+global:
+  scrape_interval: 1s
+
+scrape_configs:
+
+  - job_name: 'node_exporter'
+    static_configs:
+      - targets: ['65.2.168.175:9100']
+
+  - job_name: 'nginx_exporter_backend'
+    static_configs:
+      - targets: ['65.2.168.175:9113']
+
+  - job_name: 'nginx_exporter_frontend'
+    static_configs:
+      - targets: ['65.2.168.175:9114']
+
