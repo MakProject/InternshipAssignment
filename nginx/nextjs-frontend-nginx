@@ -1,9 +1,10 @@
 server {
-    listen 81;
+    listen 82;
     server_name localhost;
 
     location / {
-        proxy_pass http://localhost:8000;
+        proxy_pass http://localhost:3000;
     }
+
 }
 

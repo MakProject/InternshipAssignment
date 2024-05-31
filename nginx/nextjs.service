@@ -1,0 +1,14 @@
+[Unit]
+Description=Next.js Application
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/demo/InternshipAssignment/frontend
+ExecStart=/bin/bash -c 'source /home/ubuntu/.nvm/nvm.sh && npm run start'
+
+[Install]
+WantedBy=multi-user.target
+
