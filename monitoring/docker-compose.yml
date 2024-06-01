@@ -11,6 +11,18 @@ services:
     networks:
       - monitoring_network
 
+  alertmanager:
+    image: prom/alertmanager:latest
+    container_name: alertmanager
+    volumes:
+      - ./prometheus:/etc/alertmanager
+    command:
+      - '--config.file=/etc/alertmanager/alertmanager.yaml'
+    ports:
+      - '9093:9093'
+    networks:
+      - monitoring_network        
+        
   grafana:
     image: grafana/grafana:latest
     container_name: grafana

@@ -1,17 +1,27 @@
 global:
   scrape_interval: 1s
 
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      - 'alertmanager:9093'
+
+rule_files:
+  - "alert.yml"
+
+
 scrape_configs:
 
   - job_name: 'node_exporter'
     static_configs:
-      - targets: ['65.2.168.175:9100']
+      - targets: ['']
 
   - job_name: 'nginx_exporter_backend'
     static_configs:
-      - targets: ['65.2.168.175:9113']
+      - targets: ['']
 
   - job_name: 'nginx_exporter_frontend'
     static_configs:
-      - targets: ['65.2.168.175:9114']
+      - targets: ['']
 

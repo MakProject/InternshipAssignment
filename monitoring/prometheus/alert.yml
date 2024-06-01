@@ -1,0 +1,31 @@
+groups:
+  - name: UsageCPUAlert
+    rules:
+      - alert: HighCPUUsage
+        expr: 100 - (avg by (instance) (irate(node_cpu_seconds_total{mode="idle"}[1m])) * 100) > 80
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU usage detected on {{ $labels.instance }}"
+          description: "CPU usage is above 80% for more than 1 minutes."
+
+      - alert: HighMemoryUsage
+        expr: (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100 < 20
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High Memory usage detected"
+          description: "Available memory is below 20% for more than 1 minutes on instance {{ $labels.instance }}."
+
+  - name: ApplicationAlert
+    rules:
+      - alert: NginxDown
+        expr: nginx_up == 0
+        for: 10s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Nginx is down"
+          description: "The Nginx service is not responding."
