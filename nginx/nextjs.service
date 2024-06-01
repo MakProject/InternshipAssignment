@@ -6,7 +6,7 @@ After=network.target
 Type=simple
 User=ubuntu
 Group=www-data
-WorkingDirectory=/home/ubuntu/demo/InternshipAssignment/frontend
+WorkingDirectory=/home/ubuntu/InternshipAssignment/frontend
 ExecStart=/bin/bash -c 'source /home/ubuntu/.nvm/nvm.sh && npm run start'
 
 [Install]

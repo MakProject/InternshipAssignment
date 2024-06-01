@@ -13,6 +13,3 @@ output "security_group_id" {
   value       = aws_security_group.instance_sg.id
 }
 
-output "volume_id" {
-  value = aws_ebs_volume.my_ebs.id
-}

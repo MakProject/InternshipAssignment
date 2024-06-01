@@ -33,3 +33,10 @@ sudo usermod -aG docker jenkins
 sudo systemctl enable jenkins
 sudo systemctl restart jenkins
 
+
+# installs nvm (Node Version Manager)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+# download and install Node.js
+nvm install 20
+
+
